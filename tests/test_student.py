@@ -11,6 +11,11 @@ def test_init():
     assert ada.level == level
     assert ada.courses == courses
 
+def test_no_class():
+    charles = Student("Charles Babbage", "senior", [])
+
+    assert len(charles.courses) == 0
+
 def test_add_class():
     new_class = 'Intro to Feminism'
     charles = Student("Charles Babbage", "senior", ["mechanical engineering"])
@@ -41,4 +46,8 @@ def test_get_student_with_more_classes():
         ["mathematics", "foundations of computing"]
     )
 
-    # TODO: write assertions
+    result = get_student_with_more_classes(ada,charles)
+    assert  result == ada
+
+    result = get_student_with_more_classes(charles,ada)
+    assert  result == ada
